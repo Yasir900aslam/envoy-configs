@@ -1,0 +1,6 @@
+FROM node:16.17.0
+COPY . /app
+WORKDIR /app
+RUN npm install
+EXPOSE 8085
+CMD [ "npm", "run", "production" ]
