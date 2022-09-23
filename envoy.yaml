@@ -12,6 +12,10 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           codec_type: auto
           stat_prefix: ingress_http
+          http2_protocol_options: 
+            initial_stream_window_size: 65536
+            initial_connection_window_size: 65536
+            max_concurrent_streams: 100
           http_filters:
             - name: envoy.filters.http.grpc_web
               typed_config:
@@ -64,9 +68,6 @@ static_resources:
       connect_timeout: 1000s
       type: LOGICAL_DNS
       lb_policy: round_robin
-      http2_protocol_options: 
-        initial_stream_window_size: 65536
-        initial_connection_window_size: 65536
       per_connection_buffer_limit_bytes: 1000000000
       load_assignment:
         cluster_name: production
@@ -81,9 +82,6 @@ static_resources:
       connect_timeout: 1000s
       type: LOGICAL_DNS
       lb_policy: round_robin
-      http2_protocol_options: 
-        initial_stream_window_size: 65536
-        initial_connection_window_size: 65536
       per_connection_buffer_limit_bytes: 1000000000
       load_assignment:
         cluster_name: development
