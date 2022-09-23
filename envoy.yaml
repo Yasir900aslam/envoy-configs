@@ -13,7 +13,6 @@ static_resources:
           codec_type: auto
           stat_prefix: ingress_http
           http_filters:
-            - name: "envoy.filters.network.http_connection_manager"
             - name: envoy.filters.http.grpc_web
               typed_config:
                "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
